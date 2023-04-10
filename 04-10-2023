@@ -1,0 +1,50 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+
+using namespace std;
+
+//prototypes
+
+double sinGet(int);
+double cosGet(int);
+double average(int);
+
+//globals
+const double PI = 3.14159;
+
+int main() {
+	int a;
+	cout << "Enter an integer: ";
+	cin >> a;
+	cout << "\nSin of " << a << " = " << fixed << showpoint << setprecision(10) << sinGet(a);
+	cout << "\nEnter a new integer: ";
+	cin >> a;
+	cout << "\nCos of " << a << " = " << cosGet(a);
+
+	do {
+		cout << "\nenter a positive integer(enter negative numbers to exit): ";
+		cin >> a;
+		cout << "\ncurrent average is: " << average(a);
+	} while (a >= 0);
+
+}
+
+double sinGet(int num) {
+	return sin(PI*num);
+}
+
+double cosGet(int num) {
+	return cos(PI*num);
+}
+
+double average(int num) {
+	static int nums, runs;
+	nums += num;
+	runs++;
+	if (runs == 0) {
+		return 0;
+	}
+	
+	return nums / runs;
+}
